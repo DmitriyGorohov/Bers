@@ -24,7 +24,7 @@ const App = () => {
   return (
     <SafeAreaProvider style={styles.container}>
       <StatusBar
-        barStyle="dark-content"
+        barStyle="light-content"
         backgroundColor={'transparent'}
         translucent
       />

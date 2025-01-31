@@ -1,5 +1,11 @@
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { Fragment } from 'react';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Colors from '../../styles/Colors.ts';
 import Header from '../../components/Header.tsx';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -38,7 +44,12 @@ const Events = (): React.JSX.Element => {
         }}
       >
         <IconComponent
-          style={{ width: 250, height: 100, marginBottom: 20, alignSelf: 'center' }}
+          style={{
+            width: 250,
+            height: 100,
+            marginBottom: 20,
+            alignSelf: 'center',
+          }}
           icon="logoBers"
         />
         <View
@@ -48,27 +59,44 @@ const Events = (): React.JSX.Element => {
             backgroundColor: Colors.background,
           }}
         >
-          {myBookEventsList.map((item) => (
-            <>
-              <Text style={{ color: Colors.white, textAlign: 'right', paddingHorizontal: 20, marginBottom: 4, fontSize: 16 }}>{item.time}</Text>
-              <TouchableOpacity
-                key={item.id}
-                onPress={() =>
-                  Navigation.navigate(Screens.EVENTS_DETAIL, {
-                    iconName: handleSwitchIconName(item.id),
-                  })
-                }
-                activeOpacity={0.8}
-                style={styles.item}
-              >
+          <ScrollView>
+            {myBookEventsList.map((item) => (
+              <Fragment key={item.id}>
                 <Text
-                  style={{ textAlign: 'center', color: Colors.redButton, fontSize: 22, fontWeight: '800' }}
+                  style={{
+                    color: Colors.white,
+                    textAlign: 'right',
+                    paddingHorizontal: 20,
+                    marginBottom: 4,
+                    fontSize: 16,
+                  }}
                 >
-                  {item.value}
+                  {item.time}
                 </Text>
-              </TouchableOpacity>
-            </>
-          ))}
+                <TouchableOpacity
+                  onPress={() =>
+                    Navigation.navigate(Screens.EVENTS_DETAIL, {
+                      iconName: handleSwitchIconName(item.id),
+                    })
+                  }
+                  activeOpacity={0.8}
+                  style={styles.item}
+                >
+                  <Text
+                    style={{
+                      textAlign: 'center',
+                      color: Colors.redButton,
+                      paddingHorizontal: 12,
+                      fontSize: 22,
+                      fontWeight: '800',
+                    }}
+                  >
+                    {item.value}
+                  </Text>
+                </TouchableOpacity>
+              </Fragment>
+            ))}
+          </ScrollView>
         </View>
       </View>
     </SafeAreaView>
