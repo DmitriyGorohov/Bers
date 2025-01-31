@@ -41,9 +41,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: Colors.redButton,
-    borderRadius: 8,
-    width: '70%',
-    padding: 6,
+    borderRadius: 100,
+    width: '60%',
+    padding: 2,
   },
   counterButton: {
     justifyContent: 'center',
@@ -52,12 +52,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   counterText: {
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: '700',
     color: Colors.white,
   },
   counterTextRight: {
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: '700',
     color: Colors.white,
   },

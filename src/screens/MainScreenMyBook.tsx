@@ -1,11 +1,11 @@
 import { type FC } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Colors from '../styles/Colors.ts';
-import { Screen } from '../components/base/Screen.tsx';
 import { IconComponent } from '../components/icon/IconComponent.tsx';
 import { myBookMainList } from '../utils/common.ts';
 import Screens from '../navigation/consts/screens.ts';
 import Navigation from '../navigation/navigation.ts';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 interface MainScreenProps {}
 
@@ -14,21 +14,10 @@ const MainScreenMyBook: FC<MainScreenProps> = (): React.JSX.Element => {
     Navigation.navigate(screen);
   };
   return (
-    <Screen preset="auto" backgroundColor={Colors.redButton}>
+    <SafeAreaView edges={['top']} style={{ backgroundColor: Colors.background, flex: 1, paddingHorizontal: 40, }}>
       <View style={styles.container}>
-        <IconComponent style={{ width: 150, height: 150 }} icon="logo" />
+        <IconComponent style={{ width: 320, height: 150 }} icon="logoBers" />
       </View>
-      <Text
-        style={{
-          color: Colors.redButtonBlack,
-          fontSize: 32,
-          fontWeight: '900',
-          textAlign: 'center',
-          paddingTop: 24,
-        }}
-      >
-        myBook
-      </Text>
       <View style={{ paddingHorizontal: 16, marginBottom: 34, paddingTop: 12 }}>
         {myBookMainList.map((item) => {
           return (
@@ -38,7 +27,6 @@ const MainScreenMyBook: FC<MainScreenProps> = (): React.JSX.Element => {
               activeOpacity={0.8}
               style={[
                 styles.item,
-                item.id === 1 && { backgroundColor: Colors.redButtonBlack },
               ]}
             >
               <Text
@@ -55,35 +43,23 @@ const MainScreenMyBook: FC<MainScreenProps> = (): React.JSX.Element => {
         activeOpacity={0.8}
         style={{ alignSelf: 'center' }}
       >
-        <IconComponent style={{ width: 50, height: 50 }} icon="basket_menu" />
+        <IconComponent style={{ width: 50, height: 50 }} icon="karzina" />
       </TouchableOpacity>
-    </Screen>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.white,
-    height: 250,
+    backgroundColor: Colors.background,
     paddingTop: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    borderBottomLeftRadius: 16,
-    borderBottomRightRadius: 16,
-    shadowColor: Colors.black,
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
-
-    elevation: 12,
   },
   item: {
-    borderWidth: 1,
+    borderWidth: 3,
     marginBottom: 10,
-    borderColor: Colors.white,
-    borderRadius: 12,
+    borderColor: Colors.redButton,
+    borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 14,

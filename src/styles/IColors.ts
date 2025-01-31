@@ -4,6 +4,7 @@ interface IBaseColors {
 
 export interface IColors extends IBaseColors {
     transparent: string;
+    background: string;
     black: string;
     gray: string;
     white: string;
